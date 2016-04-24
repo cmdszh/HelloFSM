@@ -7,12 +7,20 @@ using System.Threading.Tasks;
 namespace HelloFSM
 {
    public class StateMachine<T> where T:BaseGameEntity
-    {
+   {
+       #region member data
        private T m_kOwner;
        private State<T> m_kCurrentState;
        private State<T> m_kGlobleState;
        private State<T> m_kPrivirsState;
 
+       public State<T> CurrentState { get { return m_kCurrentState; } }
+       public State<T> PrivioursState { get { return m_kPrivirsState; } }
+       public State<T> GloubleState { get { return m_kGlobleState; } }
+
+       #endregion
+
+       #region member function
        public StateMachine(T entity)
        { m_kOwner = entity; }
 
@@ -42,13 +50,24 @@ namespace HelloFSM
            ChangeState(m_kPrivirsState);
        }
 
-       public State<T> CurrentState{get{return m_kCurrentState;}}
-       public State<T> PrivioursState{get{return m_kPrivirsState;}}
-       public State<T> GloubleState{get{return m_kGlobleState;}}
-
        public bool isInState(State<T> st){
            return st == m_kCurrentState;
        }
+
+       public bool HandleMessage(Telegram telegram)
+       {
+           if (m_kCurrentState != null && m_kCurrentState.OnMessage(m_kOwner, telegram))
+           {
+               return true;
+           }
+
+           if (m_kGlobleState != null && m_kGlobleState.OnMessage(m_kOwner, telegram))
+           {
+               return true;
+           }
+           return false;
+       }
+       #endregion
 
    }
 }

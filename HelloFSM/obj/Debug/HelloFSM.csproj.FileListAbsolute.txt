@@ -7,6 +7,6 @@ c:\users\sunzehong\documents\visual studio 2012\Projects\HelloFSM\HelloFSM\obj\D
 F:\HelloFSM\HelloFSM\HelloFSM\bin\Debug\HelloFSM.exe.config
 F:\HelloFSM\HelloFSM\HelloFSM\obj\Debug\HelloFSM.exe
 F:\HelloFSM\HelloFSM\HelloFSM\obj\Debug\HelloFSM.pdb
-F:\HelloFSM\HelloFSM\HelloFSM\obj\Debug\HelloFSM.csprojResolveAssemblyReference.cache
 F:\HelloFSM\HelloFSM\HelloFSM\bin\Debug\HelloFSM.exe
 F:\HelloFSM\HelloFSM\HelloFSM\bin\Debug\HelloFSM.pdb
+F:\HelloFSM\HelloFSM\HelloFSM\obj\Debug\HelloFSM.csprojResolveAssemblyReference.cache

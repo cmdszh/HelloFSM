@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HelloFSM.ElsaStates
 {
-    public class CookStew:State<MinerWife>
+    public class CookStew:StateBase<MinerWife>
     {
         private static CookStew instance;
         public static CookStew Instance

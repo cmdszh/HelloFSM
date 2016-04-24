@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HelloFSM
 {
-    public class Miner:BaseGameEntity,IDisposable
+    public class Miner:ActorBase,IDisposable
     {
         #region menmber_data
         private StateMachine<Miner> m_kStateMachine;
@@ -34,7 +34,7 @@ namespace HelloFSM
             m_kStateMachine.SetGlobleState(MinerGlobalState.Instance);
         }
 
-        public void ChangeState(State<Miner> m_pNewState)
+        public void ChangeState(StateBase<Miner> m_pNewState)
         {
         }
         public override void Update()

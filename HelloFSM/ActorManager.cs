@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 
 namespace HelloFSM
 {
-   public class EntityManager
+   public class ActorManager
     {
-       private Dictionary<int, BaseGameEntity> m_kEntityMap=new Dictionary<int,BaseGameEntity>();
-       private EntityManager()
+       private Dictionary<int, ActorBase> m_kEntityMap=new Dictionary<int,ActorBase>();
+       private ActorManager()
        { }
 
-       public static EntityManager Instance;
-       public void RegesterEntity(BaseGameEntity entity)
+       public static ActorManager Instance;
+       public void RegesterEntity(ActorBase entity)
        {
            throw new NotImplementedException();
        }
 
-       public BaseGameEntity GetEntityFromID(int id)
+       public ActorBase GetEntityFromID(int id)
        {
            throw new NotImplementedException();
        }
 
-       public void RemoveEntity(BaseGameEntity entity)
+       public void RemoveEntity(ActorBase entity)
        {
            throw new NotImplementedException();
        }

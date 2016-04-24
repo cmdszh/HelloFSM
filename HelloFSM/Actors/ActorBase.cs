@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HelloFSM
 {
-    public class BaseGameEntity
+    public class ActorBase
     {
         private static int m_kId;
         public void SetId(int id)
@@ -14,7 +14,7 @@ namespace HelloFSM
             id = m_kId;
         }
 
-        public BaseGameEntity(int id)
+        public ActorBase(int id)
         {
             SetId(id);
         }

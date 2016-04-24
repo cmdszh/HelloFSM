@@ -8,6 +8,6 @@ namespace HelloFSM.ElsaStates
 {
     class DoHouseWork
     {
-        public static State<MinerWife> Instance { get; set; }
+        public static StateBase<MinerWife> Instance { get; set; }
     }
 }

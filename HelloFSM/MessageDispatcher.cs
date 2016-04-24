@@ -14,7 +14,7 @@ namespace HelloFSM
         public const int SEND_MSG_IMMEDIATELY=0;
         public const object NO_ADDITIONAL_INFO = null;
         private List<Telegram> PriorityQ=new List<Telegram>();
-        private void Discharge(BaseGameEntity pReciver, Telegram msg)
+        private void Discharge(ActorBase pReciver, Telegram msg)
         {
             pReciver.HandleMessage(msg);
         }
@@ -25,7 +25,7 @@ namespace HelloFSM
 
         public void DispatchMessage(double delay,int sender,int recevier,int msg,object ExtraInfo)
         {
-            BaseGameEntity pRecevier = EntityManager.Instance.GetEntityFromID(recevier);
+            ActorBase pRecevier = ActorManager.Instance.GetEntityFromID(recevier);
             Telegram telegram =new Telegram(delay,sender,recevier,msg,ExtraInfo);
             if (delay <= 0)
             {
@@ -52,7 +52,7 @@ namespace HelloFSM
             while(PriorityQ.Count>0 && PriorityQ[0].DispatchTime<=currentTime)
             {
                 Telegram telegram = PriorityQ[0];
-                BaseGameEntity pReceiver = EntityManager.Instance.GetEntityFromID(telegram.Receiver);
+                ActorBase pReceiver = ActorManager.Instance.GetEntityFromID(telegram.Receiver);
                 Discharge(pReceiver, telegram);
                 PriorityQ.RemoveAt(0);
             }

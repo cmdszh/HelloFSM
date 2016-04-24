@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HelloFSM
 {
-    public class MinerWife:BaseGameEntity,IDisposable
+    public class MinerWife:ActorBase,IDisposable
     {
         private StateMachine<MinerWife> m_kStateMachine;
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HelloFSM
 {
-    public class QuenchThirst:State<Miner>
+    public class QuenchThirst:StateBase<Miner>
     {
         private static QuenchThirst instance;
         public static QuenchThirst Instance
@@ -19,9 +19,15 @@ namespace HelloFSM
             }
         }
 
-        public void Enter(Miner gameEntity)
+        public void Enter(Miner miner)
         {
-            throw new NotImplementedException();
+            //send message to mosca i`m in now
+            //todo get id of mosca
+            int moscaId=0;
+            int msgType = 1;
+            Telegram msg = new Telegram(MessageDispatcher.SEND_MSG_IMMEDIATELY, miner.ID, moscaId, msgType, MessageDispatcher.NO_ADDITIONAL_INFO);
+            MessageDispatcher.Instance.DispatchMessage(MessageDispatcher.SEND_MSG_IMMEDIATELY, msg.Sender, msg.Receiver, msg.Msg, msg.ExtraInfo);
+
         }
 
         public void Excute(Miner gameEntity)

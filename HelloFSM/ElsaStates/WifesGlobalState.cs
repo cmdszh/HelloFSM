@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HelloFSM.ElsaStates
 {
-   public class WifesGlobalState:State<MinerWife>
+   public class WifesGlobalState:StateBase<MinerWife>
     {
         public void Enter(MinerWife gameEntity)
         {
@@ -39,6 +39,6 @@ namespace HelloFSM.ElsaStates
             return false;
         }
 
-        public static State<MinerWife> Instance { get; set; }
+        public static StateBase<MinerWife> Instance { get; set; }
     }
 }

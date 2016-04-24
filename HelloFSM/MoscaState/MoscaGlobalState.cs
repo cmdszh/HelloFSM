@@ -6,29 +6,28 @@ using System.Threading.Tasks;
 
 namespace HelloFSM
 {
-    public class MinerGlobalState:StateBase<Miner>
+    public class MoscaGlobalState:StateBase<Mosca>
     {
-        public static StateBase<Miner> Instance { get; set; }
-
-        public void Enter(Miner gameEntity)
+        public void Enter(Mosca gameEntity)
         {
             throw new NotImplementedException();
         }
 
-        public void Excute(Miner gameEntity)
+        public void Excute(Mosca gameEntity)
         {
             throw new NotImplementedException();
         }
 
-        public void Exit(Miner gameEntity)
+        public void Exit(Mosca gameEntity)
         {
             throw new NotImplementedException();
         }
 
-
-        public bool OnMessage(Miner pReceiver, Telegram telegram)
+        public bool OnMessage(Mosca pReceiver, Telegram telegram)
         {
             throw new NotImplementedException();
         }
+
+        public static StateBase<Mosca> Inatance { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HelloFSM
 {
-    public class EnterMineAndDigForNugget:State<Miner>
+    public class EnterMineAndDigForNugget:StateBase<Miner>
     {
         private static EnterMineAndDigForNugget m_kInstance;
         public static EnterMineAndDigForNugget Instance

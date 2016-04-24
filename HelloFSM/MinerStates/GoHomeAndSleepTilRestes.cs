@@ -7,7 +7,7 @@ using HelloFSM.MinerStates;
 
 namespace HelloFSM
 {
-    public class GoHomeAndSleepTilRestes:State<Miner>
+    public class GoHomeAndSleepTilRestes:StateBase<Miner>
     {
         private static GoHomeAndSleepTilRestes instance;
         public static GoHomeAndSleepTilRestes Instance

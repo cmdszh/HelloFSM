@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HelloFSM
 {
-    class VisitBankAndDepositGold:State<Miner>
+    class VisitBankAndDepositGold:StateBase<Miner>
     {
         private static VisitBankAndDepositGold instance;
         public static VisitBankAndDepositGold Instance

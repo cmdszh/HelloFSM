@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HelloFSM
 {
-    public interface State<T> where T : BaseGameEntity
+    public interface StateBase<T> where T : ActorBase
     {
         void Enter(T gameEntity);
 

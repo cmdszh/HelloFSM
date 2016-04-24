@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HelloFSM.MinerStates
 {
-   public class EatStew:State<Miner>
+   public class EatStew:StateBase<Miner>
     {
        private static EatStew instance;
        public static EatStew Instance { get { if (instance == null)instance = new EatStew(); return instance; } }

@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace HelloFSM
 {
-   public class StateMachine<T> where T:BaseGameEntity
+   public class StateMachine<T> where T:ActorBase
    {
        #region member data
        private T m_kOwner;
-       private State<T> m_kCurrentState;
-       private State<T> m_kGlobleState;
-       private State<T> m_kPrivirsState;
+       private StateBase<T> m_kCurrentState;
+       private StateBase<T> m_kGlobleState;
+       private StateBase<T> m_kPrivirsState;
 
-       public State<T> CurrentState { get { return m_kCurrentState; } }
-       public State<T> PrivioursState { get { return m_kPrivirsState; } }
-       public State<T> GloubleState { get { return m_kGlobleState; } }
+       public StateBase<T> CurrentState { get { return m_kCurrentState; } }
+       public StateBase<T> PrivioursState { get { return m_kPrivirsState; } }
+       public StateBase<T> GloubleState { get { return m_kGlobleState; } }
 
        #endregion
 
@@ -24,9 +24,9 @@ namespace HelloFSM
        public StateMachine(T entity)
        { m_kOwner = entity; }
 
-       public void SetCurrentState(State<T> s){m_kCurrentState =s;}
-       public void SetGlobleState(State<T> s){m_kGlobleState =s;}
-       public void SetPrivirsState(State<T> s){m_kPrivirsState =s;}
+       public void SetCurrentState(StateBase<T> s){m_kCurrentState =s;}
+       public void SetGlobleState(StateBase<T> s){m_kGlobleState =s;}
+       public void SetPrivirsState(StateBase<T> s){m_kPrivirsState =s;}
 
        public void Update()
        {
@@ -34,7 +34,7 @@ namespace HelloFSM
            if(m_kCurrentState!=null)m_kCurrentState.Excute(m_kOwner);
        }
 
-       public void ChangeState(State<T> pNewState)
+       public void ChangeState(StateBase<T> pNewState)
        {
            if(pNewState !=null )
            {
@@ -50,7 +50,7 @@ namespace HelloFSM
            ChangeState(m_kPrivirsState);
        }
 
-       public bool isInState(State<T> st){
+       public bool isInState(StateBase<T> st){
            return st == m_kCurrentState;
        }
 

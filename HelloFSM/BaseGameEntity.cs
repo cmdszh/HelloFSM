@@ -11,7 +11,7 @@ namespace HelloFSM
         private static int m_kId;
         public void SetId(int id)
         {
-
+            id = m_kId;
         }
 
         public BaseGameEntity(int id)
@@ -29,6 +29,9 @@ namespace HelloFSM
         {
             get { return m_kId; }
         }
+
+        public virtual bool HandleMessage(Telegram msg)
+        { return false; }
         
     }
 }

@@ -8,7 +8,19 @@ namespace HelloFSM
 {
     class VisitBankAndDepositGold:State<Miner>
     {
-        public static State<Miner> Instance { get; set; }
+        private static VisitBankAndDepositGold instance;
+        public static VisitBankAndDepositGold Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new VisitBankAndDepositGold();
+                return instance;
+            }
+        }
+
+        private VisitBankAndDepositGold()
+        { }
 
         public void Enter(Miner gameEntity)
         {
@@ -21,6 +33,11 @@ namespace HelloFSM
         }
 
         public void Exit(Miner gameEntity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool OnMessage(Miner pReceiver, Telegram telegram)
         {
             throw new NotImplementedException();
         }

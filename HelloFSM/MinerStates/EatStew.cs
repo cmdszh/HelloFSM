@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace HelloFSM
+namespace HelloFSM.MinerStates
 {
-    public class GoHomeAndSleepTilRestes:State<Miner>
+   public class EatStew:State<Miner>
     {
-
-        public static State<Miner> Instance { get; set; }
+       private static EatStew instance;
+       public static EatStew Instance { get { if (instance == null)instance = new EatStew(); return instance; } }
 
         public void Enter(Miner gameEntity)
         {
@@ -22,6 +21,11 @@ namespace HelloFSM
         }
 
         public void Exit(Miner gameEntity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool OnMessage(Miner pReceiver, Telegram telegram)
         {
             throw new NotImplementedException();
         }

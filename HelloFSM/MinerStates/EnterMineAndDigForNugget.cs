@@ -13,16 +13,21 @@ namespace HelloFSM
         {
             get
             {
-                if (m_kInstance == null) new EnterMineAndDigForNugget();
+                if (m_kInstance == null) m_kInstance= new EnterMineAndDigForNugget();
                 return m_kInstance;
             }
         }
 
+        private EnterMineAndDigForNugget()
+        {
+
+        }
+
         public void Enter(Miner miner)
         {
-            if (miner.Location != 1)//"goldMine"
+            if (miner.Location != miner_location_type.Mine)//"goldMine"
             {
-                miner.changeLocation(1);
+                miner.changeLocation(miner_location_type.Mine);
             }
         }
 
@@ -42,6 +47,12 @@ namespace HelloFSM
         }
 
         public void Exit(Miner gameEntity)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public bool OnMessage(Miner pReceiver, Telegram telegram)
         {
             throw new NotImplementedException();
         }

@@ -8,16 +8,25 @@ namespace HelloFSM
 {
     public class Miner:BaseGameEntity,IDisposable
     {
+        #region menmber_data
         private StateMachine<Miner> m_kStateMachine;
-        private State<Miner> m_pCurrentState;
-        private State<Miner> m_pGlobalState;
-        private State<Miner> m_pPriviousState;
-        private int m_kLocation;
+        private miner_location_type m_kLocation;
         private int m_iGoldCarried;
         private int m_iMoneyInBank;
         private int m_iThirst;
         private int m_iFatigue;
+        public miner_location_type Location
+        {
+            get { return m_kLocation; }
+        }
 
+        public StateMachine<Miner> StateMachine
+        {
+            get { return m_kStateMachine; }
+        }
+        #endregion
+
+        #region member function
         public Miner(int id):base(id)
         {
             m_kStateMachine = new StateMachine<Miner>(this);
@@ -25,34 +34,16 @@ namespace HelloFSM
             m_kStateMachine.SetGlobleState(MinerGlobalState.Instance);
         }
 
-        public void RevertToPreviousState()
-        {
-
-        }
-
         public void ChangeState(State<Miner> m_pNewState)
         {
-            if (m_pCurrentState == null && m_pNewState == null) return;
-            m_pCurrentState.Exit(this);
-            m_pCurrentState = m_pNewState;
-            m_pCurrentState.Enter(this);
-
         }
         public override void Update()
         {
             m_iThirst += 1;
-            if (m_pCurrentState != null)
-            {
-                m_pCurrentState.Excute(this);
-            }
+            m_kStateMachine.Update();
         }
 
-        public int Location
-        {
-            get { return m_kLocation; }
-        }
-
-        public void changeLocation(int loaction)
+        public void changeLocation(miner_location_type loaction)
         {
             m_kLocation = loaction;
         }
@@ -77,11 +68,23 @@ namespace HelloFSM
             return m_iThirst > 10;
         }
 
-
         public void Dispose()
         {
             m_kStateMachine = null;
         }
 
+        public override bool HandleMessage(Telegram msg)
+        {
+            return m_kStateMachine.HandleMessage(msg);
+        }
+        #endregion
+
+
+        public string Name { get; set; }
+
+        internal StateMachine<Miner> getFSM()
+        {
+            return m_kStateMachine;
+        }
     }
 }

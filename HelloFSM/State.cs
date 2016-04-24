@@ -14,5 +14,7 @@ namespace HelloFSM
 
         void Exit(T gameEntity);
 
+        bool OnMessage(T pReceiver, Telegram telegram);
+
     }
 }

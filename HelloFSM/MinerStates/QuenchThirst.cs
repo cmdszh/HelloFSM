@@ -6,9 +6,18 @@ using System.Threading.Tasks;
 
 namespace HelloFSM
 {
-    public class MinerGlobalState:State<Miner>
+    public class QuenchThirst:State<Miner>
     {
-        public static State<Miner> Instance { get; set; }
+        private static QuenchThirst instance;
+        public static QuenchThirst Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new QuenchThirst();
+                return instance;
+            }
+        }
 
         public void Enter(Miner gameEntity)
         {
@@ -21,6 +30,12 @@ namespace HelloFSM
         }
 
         public void Exit(Miner gameEntity)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public bool OnMessage(Miner pReceiver, Telegram telegram)
         {
             throw new NotImplementedException();
         }
